@@ -81,6 +81,8 @@ source ~/.phpbrew/bashrc # PHPBrew
 alias composer="hhvm /usr/local/bin/composer"
 alias livereload="guard -P livereload"
 
+export EDITOR="vim"
+
 gopath() {
   source $HOME/.gvm/scripts/gvm # Reset Golang Env
   CURRENT_PATH=$(pwd)
