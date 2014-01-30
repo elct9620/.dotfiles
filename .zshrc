@@ -79,5 +79,18 @@ source $HOME/.gvm/scripts/gvm # Golang VM
 source ~/.phpbrew/bashrc # PHPBrew
 
 alias composer="hhvm /usr/local/bin/composer"
-alias gopath='GOPATH=$(pwd):$GOPATH'
 alias livereload="guard -P livereload"
+
+gopath() {
+  source $HOME/.gvm/scripts/gvm # Reset Golang Env
+  CURRENT_PATH=$(pwd)
+  while [[ $CURRENT_PATH != "/" && $(basename $CURRENT_PATH) != "src" ]]; do
+    CURRENT_PATH=$(dirname $CURRENT_PATH)
+  done
+  CURRENT_PATH=$(dirname $CURRENT_PATH)
+  if [[ $CURRENT_PATH == "/" ]]; then
+    GOPATH=$(pwd):$GOPATH
+    return
+  fi
+  GOPATH=$CURRENT_PATH:$GOPATH
+}
