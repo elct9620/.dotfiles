@@ -45,7 +45,7 @@ ZSH_THEME="aotoki"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby bundler capistrano coffee gem git-flow golang gitignore heroku laravel npm nvm pow powder rake bower go)
+plugins=(git ruby bundler capistrano coffee gem git-flow golang gitignore heroku laravel npm nvm pow powder rake go bower)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,3 +96,17 @@ gopath() {
   fi
   GOPATH=$CURRENT_PATH:$GOPATH
 }
+
+phpunit() {
+  COMPOSER_PHPUNIT="./vendor/bin/phpunit"
+  PHPUNIT="/usr/local/bin/phpunit"
+  if [ -f "$COMPOSER_PHPUNIT" ]
+  then
+    $COMPOSER_PHPUNIT $*
+  else
+    $PHPUNIT $*
+  fi
+}
+
+# added by travis gem
+[ -f /Users/elct9620/.travis/travis.sh ] && source /Users/elct9620/.travis/travis.sh
