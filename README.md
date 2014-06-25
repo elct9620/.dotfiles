@@ -16,4 +16,7 @@ Configure
 * hhvm
 * livereload (Guard, for rails)
 
+Requirenemt
+---
 
+* `brew install reattach-to-user-namespace`

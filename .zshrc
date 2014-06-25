@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 bindkey -e
@@ -74,6 +74,10 @@ bindkey '^[[1;9D' backward-word
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+
+# Android SDK
+export PATH=$PATH:$HOME/SDKs/android/platform-tools:$HOME/SDKs/android/tools
+export PATH="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin":$PATH # Customize Java
 
 source $HOME/.gvm/scripts/gvm # Golang VM
 source ~/.phpbrew/bashrc # PHPBrew
@@ -110,3 +114,8 @@ phpunit() {
 
 # added by travis gem
 [ -f /Users/elct9620/.travis/travis.sh ] && source /Users/elct9620/.travis/travis.sh
+
+# Boot2docker
+export DOCKER_HOST=tcp://192.168.59.103:2375
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
