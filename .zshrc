@@ -79,8 +79,8 @@ bindkey '^[[1;9D' backward-word
 export PATH=$PATH:$HOME/SDKs/android/platform-tools:$HOME/SDKs/android/tools
 export PATH="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin":$PATH # Customize Java
 
-source $HOME/.gvm/scripts/gvm # Golang VM
-source ~/.phpbrew/bashrc # PHPBrew
+[ -f $HOME/.gvm/scripts/gvm ] && source $HOME/.gvm/scripts/gvm # Golang VM
+[ -f $HOME/.phpbrew/bashrc ] && source ~/.phpbrew/bashrc # PHPBrew
 
 alias composer="hhvm /usr/local/bin/composer"
 alias livereload="guard -P livereload"
