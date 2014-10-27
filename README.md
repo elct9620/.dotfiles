@@ -16,6 +16,11 @@ Configure
 * hhvm
 * livereload (Guard, for rails)
 
+Note
+---
+
+To let `git-flow` plugin work, please install git 2.0 without completion. `brew install git --without-completion`
+
 Requirement
 ---
 

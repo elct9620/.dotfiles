@@ -73,11 +73,9 @@ bindkey '^[[1;9D' backward-word
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
+[ -s $(brew --prefix nvm)/nvm.sh ] && source $(brew --prefix nvm)/nvm.sh # This loads NVM
 
-# Android SDK
-export PATH=$PATH:$HOME/SDKs/android/platform-tools:$HOME/SDKs/android/tools
-export PATH="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin":$PATH # Customize Java
+export NVM_DIR=$HOME/.nvm
 
 [ -f $HOME/.gvm/scripts/gvm ] && source $HOME/.gvm/scripts/gvm # Golang VM
 [ -f $HOME/.phpbrew/bashrc ] && source ~/.phpbrew/bashrc # PHPBrew
