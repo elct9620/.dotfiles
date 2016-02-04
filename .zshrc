@@ -49,6 +49,9 @@ plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow p
 
 source $ZSH/oh-my-zsh.sh
 
+# Homebrew install binaries is high priority
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
 # Config default editor
