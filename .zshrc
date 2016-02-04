@@ -45,75 +45,21 @@ ZSH_THEME="aotoki"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby bundler capistrano coffee gem git-flow golang gitignore heroku laravel npm nvm pow powder rake go bower)
+plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow powder rake bower)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-bindkey -e
-bindkey '^[[1;9C' forward-word
-bindkey '^[[1;9D' backward-word
-
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-[ -s $(brew --prefix nvm)/nvm.sh ] && source $(brew --prefix nvm)/nvm.sh # This loads NVM
 
-export NVM_DIR=$HOME/.nvm
-
-[ -f $HOME/.gvm/scripts/gvm ] && source $HOME/.gvm/scripts/gvm # Golang VM
-[ -f $HOME/.phpbrew/bashrc ] && source ~/.phpbrew/bashrc # PHPBrew
-
-alias composer="hhvm /usr/local/bin/composer"
-alias livereload="guard -P livereload"
-
+# Config default editor
 export EDITOR="vim"
 
-gopath() {
-  source $HOME/.gvm/scripts/gvm # Reset Golang Env
-  CURRENT_PATH=$(pwd)
-  while [[ $CURRENT_PATH != "/" && $(basename $CURRENT_PATH) != "src" ]]; do
-    CURRENT_PATH=$(dirname $CURRENT_PATH)
-  done
-  CURRENT_PATH=$(dirname $CURRENT_PATH)
-  if [[ $CURRENT_PATH == "/" ]]; then
-    GOPATH=$(pwd):$GOPATH
-    return
-  fi
-  GOPATH=$CURRENT_PATH:$GOPATH
-}
+# Multi-Version Programming Language
+eval "$(rbenv init -)" # rbenv
+[ -f $HOME/.phpbrew/bashrc ] && source ~/.phpbrew/bashrc # PHPBrew
 
-phpunit() {
-  COMPOSER_PHPUNIT="./vendor/bin/phpunit"
-  PHPUNIT="/usr/local/bin/phpunit"
-  if [ -f "$COMPOSER_PHPUNIT" ]
-  then
-    $COMPOSER_PHPUNIT $*
-  else
-    $PHPUNIT $*
-  fi
-}
-
-# added by travis gem
-[ -f /Users/elct9620/.travis/travis.sh ] && source /Users/elct9620/.travis/travis.sh
-
-# Boot2docker
-export DOCKER_HOST=tcp://192.168.59.103:2375
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# Golang
+export GOPATH=$HOME/Workspace/Golang
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
