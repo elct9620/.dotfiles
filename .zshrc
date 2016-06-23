@@ -19,6 +19,7 @@ ZSH_THEME="aotoki"
 
 # Uncomment to change how often before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
+DISABLE_UPDATE_PROMPT=true
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -45,7 +46,7 @@ ZSH_THEME="aotoki"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow powder rake bower)
+plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow powder rake bower zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -66,3 +67,26 @@ export GOPATH=$HOME/Workspace/Golang
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
+
+# Android SDK
+export ANDROID_HOME=$HOME/Workspace/SDKs/android-sdk-macosx
+export ANDROID_NDK_HOME=$HOME/Workspace/SDKs/android-ndk-r10c
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_NDK_HOME
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/elct9620/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/elct9620/google-cloud-sdk/completion.zsh.inc'
+
+# Apex
+_apex()  {
+  COMPREPLY=()
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  local opts="$(apex autocomplete -- ${COMP_WORDS[@]:1})"
+  COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+  return 0
+}
+
+complete -F _apex apex
+
