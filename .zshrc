@@ -73,6 +73,9 @@ export ANDROID_HOME=$HOME/Workspace/SDKs/android-sdk-macosx
 export ANDROID_NDK_HOME=$HOME/Workspace/SDKs/android-ndk-r10c
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_NDK_HOME
 
+# Composer
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+
 # The next line updates PATH for the Google Cloud SDK.
 source '/Users/elct9620/google-cloud-sdk/path.zsh.inc'
 
@@ -86,6 +89,19 @@ _apex()  {
   local opts="$(apex autocomplete -- ${COMP_WORDS[@]:1})"
   COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
   return 0
+}
+
+# Composer Optimize
+composer() {
+  # Requirement
+  #
+  # Curl, Filter, Hash, iconv, JSON, OpenSSL, Phar
+  #
+  # Color: Posix
+  # Cache: Opcache
+  php \
+    -n \
+    "$HOME/.phpbrew/bin/composer" $*
 }
 
 complete -F _apex apex
