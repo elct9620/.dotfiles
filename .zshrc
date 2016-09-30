@@ -50,6 +50,9 @@ plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow p
 
 source $ZSH/oh-my-zsh.sh
 
+# Vim
+alias vi="vim"
+
 # Homebrew install binaries is high priority
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
@@ -89,6 +92,16 @@ _apex()  {
   local opts="$(apex autocomplete -- ${COMP_WORDS[@]:1})"
   COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
   return 0
+}
+
+# Highlight Code to RTF
+function light() {
+  if [ -z "$2" ]
+    then src="pbpaste"
+  else
+    src="cat $2"
+  fi
+  $src | highlight -O rtf --syntax $1 --font SourceCodePro --style solarized-light --font-size 24 | pbcopy
 }
 
 # Composer Optimize
