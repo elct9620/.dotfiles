@@ -16,9 +16,6 @@ GB=$fg_blod[green]
 YB=$fg_blod[yellow]
 RESET=$reset_color
 
-#PREFIX
-PREFIX="[%{$B%}$(whoami)%{$RESET%}]"
-
 #Functions
 
 # Get the status of the working tree (copied and modified from git.zsh)
@@ -68,6 +65,9 @@ function custom_git_prompt() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$(git_prompt_ahead)$(custom_git_prompt_status)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
+
+#PREFIX
+PREFIX="[%{$B%}$(whoami)%{$RESET%}]"
 
 #PROMPT
 PROMPT='$PREFIX %1~ $(custom_git_prompt)%% %b%{$RESET%}'

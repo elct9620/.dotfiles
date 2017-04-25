@@ -1,0 +1,15 @@
+[alias]
+  prune = fetch --prune
+  undo = rest --soft HEAD^
+
+  stash-all = stash save --include-untracked
+  sa = stash-all
+
+  glog = log --graph --abbrev-commit --pretty=short
+  gl = log --graph --abbrev-commit --pretty=short
+
+  c = commit
+  ca = commit --amend
+
+[commit]
+  gpgSign = true

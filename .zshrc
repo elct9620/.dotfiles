@@ -119,3 +119,10 @@ composer() {
 
 complete -F _apex apex
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# DIRCOLORS
+eval $(gdircolors -b $HOME/.dotfiles/.dircolors)
+if [ -n "$LS_COLORS" ]; then
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
