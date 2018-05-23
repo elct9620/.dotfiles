@@ -4,3 +4,8 @@ pry
 global_phone_dbgen
 scss-lint
 bundle
+rails
+erb2slim
+rdoc
+yard
+cats

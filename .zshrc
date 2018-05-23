@@ -46,7 +46,7 @@ DISABLE_UPDATE_PROMPT=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow powder rake bower zsh-autosuggestions)
+plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow powder rake bower zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -71,19 +71,32 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
+# Yarn
+export PATH="$PATH:$(yarn global bin)"
+
 # Android SDK
-export ANDROID_HOME=$HOME/Workspace/SDKs/android-sdk-macosx
-export ANDROID_NDK_HOME=$HOME/Workspace/SDKs/android-ndk-r10c
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_NDK_HOME
+export ANDROID_HOME=$HOME/Workspace/SDKs/Android
+# export ANDROID_NDK_HOME=$HOME/Workspace/SDKs/android-ndk-r10c
+export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
 # Composer
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/elct9620/google-cloud-sdk/path.zsh.inc'
+# source '/Users/elct9620/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
-source '/Users/elct9620/google-cloud-sdk/completion.zsh.inc'
+# source '/Users/elct9620/google-cloud-sdk/completion.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+# Git Foresta
+#
+# https://github.com/takaaki-kasai/git-foresta
+function gifo() { git-foresta --style=10 "$@" | less -RSX }
+function gifa() { git-foresta --all --style=10 "$@" | less -RSX }
+compdef _git gifo=git-log
+compdef _git gifa=git-log
 
 # Apex
 _apex()  {
@@ -97,11 +110,12 @@ _apex()  {
 # Highlight Code to RTF
 function light() {
   if [ -z "$2" ]
-    then src="pbpaste"
+    then src=$(pbpaste)
   else
-    src="cat $2"
+    src=$(cat $2)
   fi
-  $src | highlight -O rtf --syntax $1 --font SourceCodePro --style solarized-light --font-size 24 | pbcopy
+  echo $src | highlight -O rtf --syntax $1 --font SourceCodePro --style solarized-light --font-size 24 | pbcopy
+  echo "Highlight in $1 completed!"
 }
 
 # Composer Optimize
@@ -117,7 +131,7 @@ composer() {
     "$HOME/.phpbrew/bin/composer" $*
 }
 
-complete -F _apex apex
+# complete -F _apex apex
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -126,3 +140,5 @@ eval $(gdircolors -b $HOME/.dotfiles/.dircolors)
 if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
