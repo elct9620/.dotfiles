@@ -141,4 +141,9 @@ if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
 
+# Ruby Helper
+json() {
+  ruby -rawesome_print -rjson -e 'ap JSON.parse(STDIN.read)'
+}
+
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
