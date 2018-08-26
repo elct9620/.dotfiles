@@ -135,6 +135,10 @@ composer() {
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 # DIRCOLORS
 eval $(gdircolors -b $HOME/.dotfiles/.dircolors)
 if [ -n "$LS_COLORS" ]; then
