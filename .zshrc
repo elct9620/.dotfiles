@@ -63,7 +63,9 @@ export EDITOR="vim"
 
 # Multi-Version Programming Language
 eval "$(rbenv init -)" # rbenv
-[ -f $HOME/.phpbrew/bashrc ] && source ~/.phpbrew/bashrc # PHPBrew
+# [ -f $HOME/.phpbrew/bashrc ] && source ~/.phpbrew/bashrc # PHPBrew
+
+alias rubocop-fix="rubocop -a --only FrozenStringLiteralComment,StringLiterals,EmptyLines,OrderedGems,TrailingWhitespace,TrailingCommaInArrayLiteral,Layout/LeadingCommentSpace,Style/SymbolArray,Style/MutableConstant,Layout/SpaceInsideBlockBraces,Layout/LeadingBlankLines,Style/ExpandPathArguments,Style/PercentLiteralDelimiters,Style/UnneededPercentQ,Style/HashSyntax,Layout/AlignHash,Layout/EmptyLineAfterMagicComment,Layout/EmptyLineAfterGuardClause,Style/WordArray,Gemspec/OrderedDependencies"
 
 # Golang
 export GOPATH=$HOME/Workspace/Golang
@@ -119,17 +121,17 @@ function light() {
 }
 
 # Composer Optimize
-composer() {
-  # Requirement
-  #
-  # Curl, Filter, Hash, iconv, JSON, OpenSSL, Phar
-  #
-  # Color: Posix
-  # Cache: Opcache
-  php \
-    -n \
-    "$HOME/.phpbrew/bin/composer" $*
-}
+# composer() {
+#   # Requirement
+#   #
+#   # Curl, Filter, Hash, iconv, JSON, OpenSSL, Phar
+#   #
+#   # Color: Posix
+#   # Cache: Opcache
+#   php \
+#     -n \
+#     "$HOME/.phpbrew/bin/composer" $*
+# }
 
 # complete -F _apex apex
 
@@ -151,3 +153,10 @@ json() {
 }
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+
+# OPS config
+export OPS_DIR="$HOME/.ops"
+export PATH="$HOME/.ops/bin:$PATH"
+
+# Kubectl
+source <(kubectl completion zsh)
