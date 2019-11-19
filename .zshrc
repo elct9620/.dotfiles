@@ -160,3 +160,9 @@ export PATH="$HOME/.ops/bin:$PATH"
 
 # Kubectl
 source <(kubectl completion zsh)
+
+# Emscripten
+source $HOME/Workspace/SDKs/emsdk/emsdk_env.sh &> /dev/null
+
+# added by travis gem
+[ -f /Users/elct9620/.travis/travis.sh ] && source /Users/elct9620/.travis/travis.sh
