@@ -15,6 +15,7 @@ Configure
 * gvm (Golang)
 * hhvm
 * livereload (Guard, for rails)
+* `cat` => `bat`
 
 Note
 ---
@@ -25,4 +26,4 @@ Requirement
 ---
 
 * `brew install reattach-to-user-namespace`
-
+* `brew install bat`

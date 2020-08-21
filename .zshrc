@@ -50,8 +50,9 @@ plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow p
 
 source $ZSH/oh-my-zsh.sh
 
-# Vim
+# Alias
 alias vi="vim"
+alias cat="bat"
 
 # Homebrew install binaries is high priority
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -161,8 +162,10 @@ export PATH="$HOME/.ops/bin:$PATH"
 # Kubectl
 source <(kubectl completion zsh)
 
+export PATH=$PATH:$HOME/Library/Python/3.8/bin
+
 # Emscripten
-source $HOME/Workspace/SDKs/emsdk/emsdk_env.sh &> /dev/null
+# source $HOME/Workspace/SDKs/emsdk/emsdk_env.sh &> /dev/null
 
 # added by travis gem
 [ -f /Users/elct9620/.travis/travis.sh ] && source /Users/elct9620/.travis/travis.sh
