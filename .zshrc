@@ -53,6 +53,7 @@ source $ZSH/oh-my-zsh.sh
 # Alias
 alias vi="vim"
 alias cat="bat"
+alias git="LANG=en_US git"
 
 # Homebrew install binaries is high priority
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
