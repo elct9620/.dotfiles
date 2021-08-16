@@ -53,7 +53,6 @@ source $ZSH/oh-my-zsh.sh
 # Alias
 alias vi="vim"
 alias cat="bat"
-alias git="LANG=en_US git"
 
 # Homebrew install binaries is high priority
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -66,6 +65,8 @@ export EDITOR="vim"
 # Multi-Version Programming Language
 eval "$(rbenv init -)" # rbenv
 # [ -f $HOME/.phpbrew/bashrc ] && source ~/.phpbrew/bashrc # PHPBrew
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+eval "$(pyenv init -)"
 
 alias rubocop-fix="rubocop -a --only FrozenStringLiteralComment,StringLiterals,EmptyLines,OrderedGems,TrailingWhitespace,TrailingCommaInArrayLiteral,Layout/LeadingCommentSpace,Style/SymbolArray,Style/MutableConstant,Layout/SpaceInsideBlockBraces,Layout/LeadingBlankLines,Style/ExpandPathArguments,Style/PercentLiteralDelimiters,Style/UnneededPercentQ,Style/HashSyntax,Layout/AlignHash,Layout/EmptyLineAfterMagicComment,Layout/EmptyLineAfterGuardClause,Style/WordArray,Gemspec/OrderedDependencies"
 
@@ -80,8 +81,9 @@ export PATH="$PATH:$(yarn global bin)"
 
 # Android SDK
 export ANDROID_HOME=$HOME/Workspace/SDKs/Android
+export ANDROID_SDK_ROOT=$ANDROID_HOME
 # export ANDROID_NDK_HOME=$HOME/Workspace/SDKs/android-ndk-r10c
-export PATH=$PATH:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator
 
 # Composer
 export PATH="$PATH:$HOME/.composer/vendor/bin"
