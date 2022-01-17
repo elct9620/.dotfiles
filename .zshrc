@@ -46,29 +46,27 @@ DISABLE_UPDATE_PROMPT=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow powder rake bower zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git ruby bundler gem git-flow golang gitignore heroku laravel npm pow powder rake bower)
 
-source $ZSH/oh-my-zsh.sh
+# Plugins From Homebrew
+[ -f $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -f $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
+
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
 # Alias
 alias vi="vim"
 alias cat="bat"
 
-# Homebrew install binaries is high priority
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
-
 # Config default editor
 export EDITOR="vim"
 
-# Multi-Version Programming Language
-eval "$(rbenv init -)" # rbenv
-# [ -f $HOME/.phpbrew/bashrc ] && source ~/.phpbrew/bashrc # PHPBrew
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-eval "$(pyenv init -)"
+# Homebrew install binaries is high priority
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-alias rubocop-fix="rubocop -a --only FrozenStringLiteralComment,StringLiterals,EmptyLines,OrderedGems,TrailingWhitespace,TrailingCommaInArrayLiteral,Layout/LeadingCommentSpace,Style/SymbolArray,Style/MutableConstant,Layout/SpaceInsideBlockBraces,Layout/LeadingBlankLines,Style/ExpandPathArguments,Style/PercentLiteralDelimiters,Style/UnneededPercentQ,Style/HashSyntax,Layout/AlignHash,Layout/EmptyLineAfterMagicComment,Layout/EmptyLineAfterGuardClause,Style/WordArray,Gemspec/OrderedDependencies"
+# rbenv
+[ $(command -v rbenv) ] && eval "$(rbenv init -)"
 
 # Golang
 export GOPATH=$HOME/Workspace/Golang
@@ -77,24 +75,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 # Yarn
-export PATH="$PATH:$(yarn global bin)"
-
-# Android SDK
-export ANDROID_HOME=$HOME/Workspace/SDKs/Android
-export ANDROID_SDK_ROOT=$ANDROID_HOME
-# export ANDROID_NDK_HOME=$HOME/Workspace/SDKs/android-ndk-r10c
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator
-
-# Composer
-export PATH="$PATH:$HOME/.composer/vendor/bin"
-
-# The next line updates PATH for the Google Cloud SDK.
-# source '/Users/elct9620/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-# source '/Users/elct9620/google-cloud-sdk/completion.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+[ $(command -v yarn) ] && export PATH="$PATH:$(yarn global bin)"
 
 # Git Foresta
 #
@@ -103,15 +84,6 @@ function gifo() { git-foresta --style=10 "$@" | less -RSX }
 function gifa() { git-foresta --all --style=10 "$@" | less -RSX }
 compdef _git gifo=git-log
 compdef _git gifa=git-log
-
-# Apex
-_apex()  {
-  COMPREPLY=()
-  local cur="${COMP_WORDS[COMP_CWORD]}"
-  local opts="$(apex autocomplete -- ${COMP_WORDS[@]:1})"
-  COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
-  return 0
-}
 
 # Highlight Code to RTF
 function light() {
@@ -124,29 +96,10 @@ function light() {
   echo "Highlight in $1 completed!"
 }
 
-# Composer Optimize
-# composer() {
-#   # Requirement
-#   #
-#   # Curl, Filter, Hash, iconv, JSON, OpenSSL, Phar
-#   #
-#   # Color: Posix
-#   # Cache: Opcache
-#   php \
-#     -n \
-#     "$HOME/.phpbrew/bin/composer" $*
-# }
-
-# complete -F _apex apex
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
 # DIRCOLORS
-eval $(gdircolors -b $HOME/.dotfiles/.dircolors)
+[ $(command -v gdircolors) ] && eval $(gdircolors -b $HOME/.dotfiles/.dircolors)
 if [ -n "$LS_COLORS" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
@@ -158,17 +111,5 @@ json() {
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
-# OPS config
-export OPS_DIR="$HOME/.ops"
-export PATH="$HOME/.ops/bin:$PATH"
-
 # Kubectl
-source <(kubectl completion zsh)
-
-export PATH=$PATH:$HOME/Library/Python/3.8/bin
-
-# Emscripten
-# source $HOME/Workspace/SDKs/emsdk/emsdk_env.sh &> /dev/null
-
-# added by travis gem
-[ -f /Users/elct9620/.travis/travis.sh ] && source /Users/elct9620/.travis/travis.sh
+[ $(command -v kubectl) ] && source <(kubectl completion zsh)
