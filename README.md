@@ -1,29 +1,78 @@
 .dotfiles
 =========
 
-My .dotfiles
+The Aotokitsuruya's Development Environment
 
 Configure
 ---
 
-* zsh
-  * oh-my-zsh
-  * aotoki.zsh-theme (My customize theme)
-* rvm
-* phpbrew
-* nvm
-* gvm (Golang)
-* hhvm
-* livereload (Guard, for rails)
-* `cat` => `bat`
+### Tmux
 
-Note
----
+```bash
+brew install tmus
+```
 
-To let `git-flow` plugin work, please install git 2.0 without completion. `brew install git --without-completion`
+### Link Dotfiles
 
-Requirement
----
+```bash
+ln -s ~/.dotfiles ~/.tmux.conf
+```
 
-* `brew install reattach-to-user-namespace`
-* `brew install bat`
+### ZSH
+
+```bash
+brew install zsh
+```
+
+### Oh My ZSH
+
+```bash
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+### Auto Suggestions
+
+```bash
+brew install zsh-autosuggestions
+```
+
+### ZSH Syntax Highlight
+
+```bash
+brew install zsh-syntax-highlighting
+```
+
+### Link Dotfiles
+
+```bash
+rm ~/.zshrc
+ln -s ~/.dotfiles ~/.zshrc
+ln -s ~/.dotfiles/.dotfiles/.oh-my-zsh/themes/aotoki.zsh-theme ~/.dotfiles/.oh-my-zsh/themes/aotoki.zsh-theme
+```
+
+### Coreutils
+
+```bash
+brew install coreutils
+```
+
+### rbenv
+
+```bash
+brew install rbenv
+```
+
+### Bat
+
+The `cat` alternative
+
+```bash
+brew install bat
+```
+
+### Clipboard Support
+
+```bash
+brew install reattach-to-user-namespace
+```
+
