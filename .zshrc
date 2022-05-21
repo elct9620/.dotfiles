@@ -70,10 +70,8 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 [ $(command -v rbenv) ] && eval "$(rbenv init -)"
 
 # Golang
-export GOPATH=$HOME/Workspace/Golang
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+export GOROOT=$(brew --prefix go)/libexec
+export PATH=$PATH:$GOROOT/bin:$HOME/go/bin
 
 # Yarn
 [ $(command -v yarn) ] && export PATH="$PATH:$(yarn global bin)"
