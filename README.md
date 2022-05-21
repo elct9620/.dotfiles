@@ -6,19 +6,23 @@ The Aotokitsuruya's Development Environment
 Configure
 ---
 
-### Tmux
+## Tmux
 
 ```bash
-brew install tmus
+brew install tmux
 ```
 
 ### Link Dotfiles
 
 ```bash
-ln -s ~/.dotfiles ~/.tmux.conf
+ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ```
 
-### ZSH
+### iTerm2
+
+Configure Profile to set "Command" to `tmux attach -t base || tmux new -s base` enable when iTerm2 started.
+
+## ZSH
 
 ```bash
 brew install zsh
@@ -46,23 +50,31 @@ brew install zsh-syntax-highlighting
 
 ```bash
 rm ~/.zshrc
-ln -s ~/.dotfiles ~/.zshrc
-ln -s ~/.dotfiles/.dotfiles/.oh-my-zsh/themes/aotoki.zsh-theme ~/.dotfiles/.oh-my-zsh/themes/aotoki.zsh-theme
+ln -s ~/.dotfiles/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/.dotfiles/.oh-my-zsh/themes/aotoki.zsh-theme ~/.oh-my-zsh/themes/aotoki.zsh-theme
 ```
 
-### Coreutils
+## Dircolors
+
+### Corutils
 
 ```bash
 brew install coreutils
 ```
 
-### rbenv
+### Link Dotfiles
+
+```
+ln -s ~/.dotfiles/.dircolors ~/.dircolors
+```
+
+## rbenv
 
 ```bash
 brew install rbenv
 ```
 
-### Bat
+## Bat
 
 The `cat` alternative
 
@@ -70,9 +82,8 @@ The `cat` alternative
 brew install bat
 ```
 
-### Clipboard Support
+## Clipboard Support
 
 ```bash
 brew install reattach-to-user-namespace
 ```
-
