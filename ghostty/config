@@ -1,0 +1,16 @@
+font-family = ""
+font-family = "JetBrainsMono NFM Mono"
+font-family = "蘭亭黑-繁 中黑"
+font-size = 14
+font-thicken = true
+
+theme = "Solarized Dark - Patched"
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+window-padding-balance = true
+window-save-state = always
+
+shell-integration = zsh
+initial-command = "$HOME/.nix-profile/bin/tmux attach -t base || $HOME/.nix-profile/bin/tmux new -s base"
