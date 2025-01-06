@@ -5,6 +5,8 @@ font-size = 14
 font-thicken = true
 
 theme = "Solarized Dark - Patched"
+# Solarized Dark have invisible text in test output
+minimum-contrast = 1.4
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
