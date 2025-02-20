@@ -1,6 +1,7 @@
 font-family = ""
-font-family = "JetBrainsMono NFM Mono"
-font-family = "蘭亭黑-繁 中黑"
+font-family = "JetBrainsMono NFM Font Mono"
+# CJK Patch - https://github.com/be5invis/Sarasa-Gothic
+font-codepoint-map = "U+4E00-U+9FFF,U+3400-U+4DBF = Sarasa Mono TC"
 font-size = 14
 font-thicken = true
 
