@@ -6,6 +6,15 @@ The Aotokitsuruya's Development Environment
 Configure
 ---
 
+## Git
+
+Add the following to `~/.gitconfig`
+
+```bash
+[include]
+    path = ~/.dotfiles/.gitconfig
+```
+
 ## Tmux
 
 ```bash

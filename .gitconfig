@@ -1,15 +1,30 @@
-[alias]
-  prune = fetch --prune
-  undo = rest --soft HEAD^
+# Reference: https://blog.gitbutler.com/how-git-core-devs-configure-git/
 
-  stash-all = stash save --include-untracked
-  sa = stash-all
-
-  glog = log --graph --abbrev-commit --pretty=short
-  gl = log --graph --abbrev-commit --pretty=short
-
-  c = commit
-  ca = commit --amend
-
+[column]
+        ui = auto
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[diff]
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
+[push]
+        default = simple
+        autoSetupRemote = true
+        followTags = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
+[help]
+        autocorrect = prompt
 [commit]
-  gpgSign = true
+        verbose = true
+[rerere]
+        enabled = true
+        autoupdate = true
+[pull]
+        rebase = true
