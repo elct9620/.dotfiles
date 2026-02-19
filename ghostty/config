@@ -6,6 +6,7 @@ font-size = 14
 font-thicken = true
 
 theme = "Firewatch"
+# theme = "Builtin Tango Light"
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
@@ -14,4 +15,8 @@ window-padding-balance = true
 window-save-state = always
 
 shell-integration = zsh
-initial-command = "$HOME/.nix-profile/bin/tmux attach -t base || $HOME/.nix-profile/bin/tmux new -s base"
+initial-command = /bin/zsh -l -c "$HOME/.nix-profile/bin/tmux attach -t base || $HOME/.nix-profile/bin/tmux new -s base"
+
+# Vim Clipboard Integration
+clipboard-read = allow
+clipboard-write = allow
