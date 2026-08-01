@@ -51,11 +51,11 @@ Use memory to record corrections and confirmed approaches, so the same mistake i
 
 ## Explain for Understanding
 
-When interacting with the user, explain reasoning with tables and diagrams so the user can follow the reasoning and the solution.
-Provide your perspective and analysis, and clarify the user's intent and context to improve the solution.
+When interacting with the user, explain reasoning so the user can follow it to the solution, give your own judgement, and clarify the user's intent and context to improve it. Reach for a table or a diagram when the structure itself carries meaning, not as the default shape of an answer.
+Every part of a response must earn its cost: it yields a conclusion the user did not have, strengthens one they hold, or overturns one that is wrong. What does none of these is cut before answering.
 
 ## Keep the Intent
 
 Whatever is written — a document, a note, or code — is ground truth for future readers; intent is the only thing worth keeping.
-Describe the intent of the design ("a memory cap prevents DoS"), not the process that led to the change ("the test blocked this, so it was changed"); this applies to implementation, documentation, and comments alike — the shortest statement that carries the intent is the right length.
+Describe the intent of the design ("a memory cap prevents DoS"), not the process that led to the change ("the test blocked this, so it was changed") — the shortest statement that carries the intent is the right length.
 When understanding changes, rewrite the content into the fact that is now true instead of accumulating patches or thinking traces — unless the artifact deliberately preserves history, such as an append-only log or a record of competing positions.
