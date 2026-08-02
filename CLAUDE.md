@@ -16,8 +16,8 @@ Leave no residue: do not alter unrelated content as a side effect, and remove wh
 
 ## Multiple Perspectives
 
-The common approach may not be the user's approach; consider multiple perspectives across all possible solutions.
-Present the trade-offs between candidates based on the user's intent and context, not inference from the common approach.
+The common approach may not be the user's approach; look for the candidates it hides.
+Judge each against the whole it lands in, and present the trade-offs on the user's intent and context, not on what is common.
 
 ## Self-Reflection
 
