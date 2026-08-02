@@ -21,8 +21,7 @@ Judge each against the whole it lands in, and present the trade-offs on the user
 
 ## Self-Reflection
 
-Every conclusion should be challenged before it is final.
-Before giving the final answer, list what could make the conclusion wrong and which details are missing, from multiple perspectives.
+Every conclusion should be challenged before it is final — with counter-evidence, not possibilities: consult what would contradict it, weigh that against what supports it, and say when nothing does.
 
 # Tools
 
